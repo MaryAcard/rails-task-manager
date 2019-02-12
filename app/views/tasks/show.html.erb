@@ -1,0 +1,24 @@
+<h1><%= "#{@task.title}"%></h1>
+
+<%= link_to "Edit this task", edit_path %>
+
+<%= "#{@task.details}"%>
+
+<% if @task.completed == true %>
+<% statut = "checked" %>
+<div class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" id="defaultChecked2" checked disabled <%= statut %>>
+  <label class="custom-control-label" for="defaultChecked2"> this task is completed</label>
+</div>
+
+<% else %>
+<% statut = "unchecked" %>
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="defaultUnchecked" <%= statut %>>
+    <label class="custom-control-label" for="defaultUnchecked">
+      this task is not completed</label>
+
+</div>
+<% end %>
+
+<%= link_to "back to list", tasks_path %>

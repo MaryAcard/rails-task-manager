@@ -1,0 +1,20 @@
+<h1>My tasks</h1>
+
+<% @tasks.each do |task| %>
+<% if task.completed == true %>
+<% statut = "checked" %>
+<% end %>
+
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="defaultUnchecked" disabled <%= statut %>>
+    <label class="custom-control-label" for="defaultUnchecked">
+      <%= link_to "#{task.title}", task_path(task.id) %>
+      </label>
+ <%= link_to task_path(task),
+    method: :delete,
+    data: { confirm: "Are you sure?" }, :style=>'color:black;' do %> <i class="far fa-trash-alt"></i> <% end %>
+</div>
+<% end %>
+
+
+<%= link_to "+ add a new task", tasks_new_path %>
